@@ -1,6 +1,11 @@
 from tkinter import *
 
-def orderedItem(parentFrame, itemName, quantity, paymentType, totalAmount):
+def adminItemOrderContainer(
+    parentFrame,
+    itemName,
+    quantity,
+    price
+):
 
     itemFrame = Frame(
         parentFrame,
@@ -11,20 +16,20 @@ def orderedItem(parentFrame, itemName, quantity, paymentType, totalAmount):
         pady=10
     )
 
-    itemFrame.pack(fill="x", pady=5)
+    itemFrame.pack(
+        fill="x",
+        pady=5
+    )
 
-    # ITEM NAME
     itemLabel = Label(
         itemFrame,
         text=f"Item: {itemName}",
         font=("Arimo", 12, "bold"),
-        bg="#FFFFFF",
-        fg="#1B1C1C"
+        bg="#FFFFFF"
     )
 
     itemLabel.pack(anchor="w")
 
-    # QUANTITY
     quantityLabel = Label(
         itemFrame,
         text=f"Quantity: {quantity}",
@@ -34,22 +39,11 @@ def orderedItem(parentFrame, itemName, quantity, paymentType, totalAmount):
 
     quantityLabel.pack(anchor="w")
 
-    # PAYMENT TYPE
-    paymentLabel = Label(
+    priceLabel = Label(
         itemFrame,
-        text=f"Payment: {paymentType}",
+        text=f"Price: ${price}",
         font=("Arimo", 10),
         bg="#FFFFFF"
     )
 
-    paymentLabel.pack(anchor="w")
-
-    # TOTAL
-    totalLabel = Label(
-        itemFrame,
-        text=f"Total: ${totalAmount}",
-        font=("Arimo", 10),
-        bg="#FFFFFF"
-    )
-
-    totalLabel.pack(anchor="w")
+    priceLabel.pack(anchor="w")

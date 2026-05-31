@@ -1,5 +1,5 @@
 from tkinter import *
-from navbar import navbar
+from Components import navbar
 
 def paymentScreen(root):
 

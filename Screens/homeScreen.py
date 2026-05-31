@@ -1,6 +1,5 @@
 from tkinter import *
-from productCard import productCard
-from navbar import navbar
+from Components import productCard,navbar
 
 def homeScreen(root):
 

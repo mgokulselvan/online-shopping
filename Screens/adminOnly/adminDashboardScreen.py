@@ -1,5 +1,5 @@
 from tkinter import *
-from navbar import navbar
+from Components import navbar
 
 def adminDashboardScreen(root):
 
@@ -15,12 +15,12 @@ def adminDashboardScreen(root):
 
 
     def openInventoryManagement():
-        from inventoryScreen import inventoryScreen
+        from .adminInventoryManagementScreen import adminInventoryManagementScreen
         adminFrame.destroy()
-        inventoryScreen(root)
+        adminInventoryManagementScreen(root)
 
     def openOrdersManagement():
-        from adminOrdersScreen import adminOrdersScreen
+        from .adminOrdersScreen import adminOrdersScreen
         adminFrame.destroy()
         adminOrdersScreen(root)
 

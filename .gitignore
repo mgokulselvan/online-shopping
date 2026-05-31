@@ -1,0 +1,2 @@
+#learned that .gitignore ignores these files recursively ,so dont need to do *__pycache__
+__pycache__/

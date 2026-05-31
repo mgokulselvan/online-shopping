@@ -1,8 +1,7 @@
 from tkinter import *
-from itemCard import itemCard
-from navbar import navbar
+from Components import itemCard,navbar
 
-def shoppingCart(root):
+def cartScreen(root):
 
     cartFrame = Frame(root, bg="#E6E6E6")
     cartFrame.pack(fill="both", expand=True)
@@ -10,7 +9,7 @@ def shoppingCart(root):
 
     def gotoPayment():
         cartFrame.destroy()
-        from paymentScreen import paymentScreen
+        from .paymentScreen import paymentScreen
         paymentScreen(root)
 
 

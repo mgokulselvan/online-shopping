@@ -3,28 +3,28 @@ from tkinter import *
 def navbar(outerFrame,root):
 
     def openCart():
-        from shoppingCart import shoppingCart
+        from Screens import cartScreen
         outerFrame.destroy()
-        shoppingCart(root)
+        cartScreen(root)
 
     def openOrders():
-        from ordersScreen import ordersScreen
+        from Screens import customerOrdersScreen
         outerFrame.destroy()
-        ordersScreen(root)
+        customerOrdersScreen(root)
 
     def openAdmin():
-        from adminDashboardScreen import adminDashboardScreen
+        from Screens import adminDashboardScreen
         outerFrame.destroy()
         adminDashboardScreen(root);
 
 
     def logoutAction():
-        from loginScreen import loginScreen
+        from Screens import loginScreen
         outerFrame.destroy()
         loginScreen(root)
 
     def gotoHome():
-        from homeScreen import homeScreen
+        from Screens import homeScreen
         outerFrame.destroy()
         homeScreen(root)
 

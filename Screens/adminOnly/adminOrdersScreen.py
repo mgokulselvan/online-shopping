@@ -1,6 +1,5 @@
 from tkinter import *
-from navbar import navbar
-from orderAdminBox import orderAdminBox
+from Components import navbar,adminOrdersContainer
 
 def adminOrdersScreen(root):
 
@@ -174,7 +173,7 @@ def adminOrdersScreen(root):
 
     for i in range(10):
 
-        orderAdminBox(
+        adminOrdersContainer(
             ordersListFrame,
             f"ORD-{1000+i}",
             f"USR-{200+i}",

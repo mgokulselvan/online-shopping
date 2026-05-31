@@ -1,7 +1,7 @@
 from tkinter import *
-from adminOrderedItem import adminOrderedItem
+from .adminItemOrderContainer import adminItemOrderContainer
 
-def orderAdminBox(
+def adminOrdersContainer(
     parentFrame,
     orderId,
     userId,
@@ -162,14 +162,14 @@ def orderAdminBox(
 
     itemsFrame.pack(fill="x", pady=(5,10))
 
-    adminOrderedItem(
+    adminItemOrderContainer(
         itemsFrame,
         "Blue Socks",
         2,
         20
     )
 
-    adminOrderedItem(
+    adminItemOrderContainer(
         itemsFrame,
         "Black Socks",
         1,

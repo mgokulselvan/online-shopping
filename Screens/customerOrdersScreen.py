@@ -1,8 +1,7 @@
 from tkinter import *
-from orderBox import orderBox
-from navbar import navbar
+from Components import orderContainer,navbar
 
-def ordersScreen(root):
+def customerOrdersScreen(root):
 
     ordersFrame = Frame(root, bg="#E6E6E6")
     ordersFrame.pack(fill="both", expand=True)
@@ -90,19 +89,19 @@ def ordersScreen(root):
     )
 
     # SAMPLE ORDERS
-    orderBox(
+    orderContainer(
         ordersListFrame,
         "ORD-1021",
         "PLACED"
     )
 
-    orderBox(
+    orderContainer(
         ordersListFrame,
         "ORD-2044",
         "SHIPPED"
     )
 
-    orderBox(
+    orderContainer(
         ordersListFrame,
         "ORD-8821",
         "DELIVERED"

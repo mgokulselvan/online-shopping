@@ -1,9 +1,9 @@
 from tkinter import *
-from orderedItem import orderedItem
+from .orderItemCard import orderItemCard
 
-def orderBox(parentFrame, orderId, status):
+def orderContainer(parentFrame, orderId, status):
 
-    orderFrame = Frame(
+    orderContainerFrame = Frame(
         parentFrame,
         bg="#EDEDED",
         bd=1,
@@ -12,11 +12,11 @@ def orderBox(parentFrame, orderId, status):
         pady=15
     )
 
-    orderFrame.pack(fill="x", padx=20, pady=10)
+    orderContainerFrame.pack(fill="x", padx=20, pady=10)
 
     # ORDER ID
     orderIdLabel = Label(
-        orderFrame,
+        orderContainerFrame,
         text=f"Order ID: {orderId}",
         font=("Arimo", 14, "bold"),
         bg="#EDEDED",
@@ -27,7 +27,7 @@ def orderBox(parentFrame, orderId, status):
 
     # STATUS
     statusLabel = Label(
-        orderFrame,
+        orderContainerFrame,
         text=f"Status: {status}",
         font=("Arimo", 11),
         bg="#EDEDED",
@@ -37,16 +37,16 @@ def orderBox(parentFrame, orderId, status):
     statusLabel.pack(anchor="w", pady=(2,10))
 
     # SAMPLE ITEMS
-    orderedItem(
-        orderFrame,
+    orderItemCard(
+        orderContainerFrame,
         "Blue Socks",
         2,
         "UPI",
         20
     )
 
-    orderedItem(
-        orderFrame,
+    orderItemCard(
+        orderContainerFrame,
         "Black Socks",
         1,
         "COD",
@@ -56,7 +56,7 @@ def orderBox(parentFrame, orderId, status):
 # CANCEL BUTTON
 
     cancelBtn = Button(
-        orderFrame,
+        orderContainerFrame,
         text="Cancel Order",
         bg="#B22222",
         fg="white",

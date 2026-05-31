@@ -1,8 +1,7 @@
 from tkinter import *
-from inventoryItem import inventoryItem
-from navbar import navbar
+from Components import navbar,inventoryItem
 
-def inventoryScreen(root):
+def adminInventoryManagementScreen(root):
 
     inventoryFrame = Frame(root, bg="#E6E6E6")
     inventoryFrame.pack(fill="both", expand=True)
@@ -11,8 +10,8 @@ def inventoryScreen(root):
 
     def addProduct():
         inventoryFrame.destroy()
-        from addProductScreen import addProductScreen
-        addProductScreen(root)
+        from adminAddProductScreen import adminAddProductScreen
+        adminAddProductScreen(root)
 
 
     # TITLE SECTION

@@ -1,25 +1,25 @@
 from tkinter import *
-from navbar import navbar
+from Components import navbar
 
-def addProductScreen(root):
+def adminAddProductScreen(root):
 
-    addFrame = Frame(
+    addProductsFrame = Frame(
         root,
         bg="#E6E6E6"
     )
 
-    addFrame.pack(
+    addProductsFrame.pack(
         fill="both",
         expand=True
     )
 
-    navbar(addFrame,root)
+    navbar(addProductsFrame,root)
     # =========================
     # TITLE SECTION
     # =========================
 
     titleFrame = Frame(
-        addFrame,
+        addProductsFrame,
         bg="#E6E6E6"
     )
 
@@ -29,7 +29,7 @@ def addProductScreen(root):
         pady=(15,10)
     )
 
-    addTitle = Label(
+    pageTitle = Label(
         titleFrame,
         text="Add Product",
         font=("Arimo", 28, "bold"),
@@ -37,7 +37,7 @@ def addProductScreen(root):
         fg="#1B1C1C"
     )
 
-    addTitle.pack(anchor="w")
+    pageTitle.pack(anchor="w")
 
     subtitleLabel = Label(
         titleFrame,
@@ -68,7 +68,7 @@ def addProductScreen(root):
     # =========================
 
     formCard = Frame(
-        addFrame,
+        addProductsFrame,
         bg="#FFFFFF",
         bd=1,
         relief="solid"
@@ -251,7 +251,7 @@ def addProductScreen(root):
     # =========================
 
     buttonFrame = Frame(
-        addFrame,
+        addProductsFrame,
         bg="#E6E6E6"
     )
 
