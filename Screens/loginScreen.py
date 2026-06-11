@@ -1,3 +1,4 @@
+import sessionData
 from tkinter import *
 
 def loginScreen(root):
@@ -9,6 +10,30 @@ def loginScreen(root):
         from .registerScreen import registerScreen
         main_frame.destroy()
         registerScreen(root)
+
+    def login():
+        from services.login_user import login_user
+        userData=login_user(
+                email.get(),
+                password.get()
+                )
+        if not userData:
+            messageLabel.config(
+                    text="Invalid email or password",
+                    fg="red"
+                    )
+            return
+        sessionData.curr_user_id = userData[0]
+        sessionData.curr_user_name = userData[1]
+        sessionData.curr_user_email = userData[2]
+        sessionData.curr_user_phNo = userData[4]
+        sessionData.curr_user_addr = userData[5]
+        
+        from .homeScreen import homeScreen
+        main_frame.destroy()
+        homeScreen(root)
+
+
 
 # NAVBAR
     navbarFrame = Frame(main_frame, bg="#D9D9D9", height=60)
@@ -82,15 +107,15 @@ def loginScreen(root):
     formFrame.columnconfigure(0, weight=1)
     formFrame.columnconfigure(1, weight=1)
 
-# USERNAME
-    usernameLabel = Label(formFrame, text="Username:", fg="#1B1C1C", bg="#E6E6E6")
-    usernameLabel.grid(row=4, column=0, sticky="w", padx=10, pady=5)
+# EMILY
+    emailLabel = Label(formFrame, text="Email:", fg="#1B1C1C", bg="#E6E6E6")
+    emailLabel.grid(row=4, column=0, sticky="w", padx=10, pady=5)
 
-    username = Entry(formFrame, width=30)
-    username.grid(row=4, column=1, sticky="ew", padx=10, pady=5)
+    email = Entry(formFrame, width=30)
+    email.grid(row=4, column=1, sticky="ew", padx=10, pady=5)
 
 # PASSWORD
-    passLabel = Label(formFrame, text="Set Password:", fg="#1B1C1C", bg="#E6E6E6")
+    passLabel = Label(formFrame, text="Password:", fg="#1B1C1C", bg="#E6E6E6")
     passLabel.grid(row=5, column=0, sticky="w", padx=10, pady=5)
 
     password = Entry(formFrame, width=30, show="•")
@@ -107,7 +132,22 @@ def loginScreen(root):
             password.config(show="•")
 
     ShowBtn=Checkbutton(formFrame,text = "Show Password",variable = Checkbutton1,onvalue=1,offvalue=0,height=2,fg="#1B1C1C",bg="#E6E6E6",command=tglPsswdVis,highlightthickness=0,bd=0)
-    ShowBtn.grid(column=0,row=6,sticky="w",padx=5)
+    ShowBtn.grid(column=0,row=7,sticky="w",padx=5)
+
+
+#to let em know they bald
+    messageLabel = Label(
+        formFrame,
+        text="",
+        fg="red",
+        bg="#E6E6E6"
+    )
+
+    messageLabel.grid(
+        row=6,
+        column=0,
+        columnspan=2
+    )
 
 #LOGIN
     login_Frame = Frame(main_frame,bd=1)
@@ -141,7 +181,8 @@ def loginScreen(root):
         btmBar,
         text="Login",
         bg="#1C4975",
-        fg="#FFFFFF"
+        fg="#FFFFFF",
+        command=login
     )
 
     loginBtn.grid(row=0, column=1, sticky="e")

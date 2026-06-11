@@ -1,4 +1,5 @@
-from database.connection import get_connection
+from .db import get_connection
+
 def execute(query, params=None, fetchone=False, fetchall=False):
     conn = get_connection()
     cursor = conn.cursor()

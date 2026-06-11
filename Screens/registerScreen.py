@@ -11,6 +11,35 @@ def registerScreen(root):
         main_frame.destroy()
         loginScreen(root)
 
+    #Register lgoic
+    def register():
+        from services.register_user import register_user
+        if password.get()!=repassword.get():
+            messageLabel.config(
+                text="Passwords do not match",
+                fg="red"
+            )
+            return
+
+        success = register_user(
+            name.get(),
+            email.get(),
+            phone.get(),
+            password.get(),
+            address.get()
+        )
+
+        if success:
+            messageLabel.config(
+                text="Registration successful",
+                fg="green"
+            )
+        else:
+            messageLabel.config(
+                text="Email already exists",
+                fg="red"
+            )
+
 
 # NAVBAR
     navbarFrame = Frame(main_frame, bg="#D9D9D9", height=60)
@@ -112,28 +141,19 @@ def registerScreen(root):
     address = Entry(formFrame, width=30)
     address.grid(row=3, column=1, sticky="ew", padx=10, pady=5)
 
-# USERNAME
-    usernameLabel = Label(formFrame, text="Username:", fg="#1B1C1C", bg="#E6E6E6")
-    usernameLabel.grid(row=4, column=0, sticky="w", padx=10, pady=5)
-
-    username = Entry(formFrame, width=30)
-    username.grid(row=4, column=1, sticky="ew", padx=10, pady=5)
-
 # PASSWORD
     passLabel = Label(formFrame, text="Set Password:", fg="#1B1C1C", bg="#E6E6E6")
-    passLabel.grid(row=5, column=0, sticky="w", padx=10, pady=5)
+    passLabel.grid(row=4, column=0, sticky="w", padx=10, pady=5)
 
     password = Entry(formFrame, width=30, show="•")
-    password.grid(row=5, column=1, sticky="ew", padx=10, pady=5)
+    password.grid(row=4, column=1, sticky="ew", padx=10, pady=5)
 
 # REPASSWORD
     repassLabel = Label(formFrame, text="Reenter Password:", fg="#1B1C1C", bg="#E6E6E6")
-    repassLabel.grid(row=6, column=0, sticky="w", padx=10, pady=5)
+    repassLabel.grid(row=5, column=0, sticky="w", padx=10, pady=5)
 
     repassword = Entry(formFrame, width=30, show="•")
-    repassword.grid(row=6, column=1, sticky="ew", padx=10, pady=5)
-
-
+    repassword.grid(row=5, column=1, sticky="ew", padx=10, pady=5)
 
     #Show password 
     Checkbutton1=IntVar()
@@ -148,7 +168,21 @@ def registerScreen(root):
 
 # SHOW PASSWORD
     ShowBtn=Checkbutton(formFrame,text = "Show Password",variable = Checkbutton1,onvalue=1,offvalue=0,height=2,fg="#1B1C1C",bg="#E6E6E6",command=tglPsswdVis,highlightthickness=0,bd=0)
-    ShowBtn.grid(row=7, column=0, sticky="w", padx=5, pady=5)
+    ShowBtn.grid(row=6, column=0, sticky="w", padx=5, pady=5)
+
+#To show the status of registration
+    messageLabel = Label(
+        formFrame,
+        text="",
+        fg="red",
+        bg="#E6E6E6"
+    )
+
+    messageLabel.grid(
+        row=6,
+        column=0,
+        columnspan=2
+    )
 
 # BOTTOM BAR
     btmBar = Frame(main_frame, bg="#E6E6E6")
@@ -177,7 +211,8 @@ def registerScreen(root):
         btmBar,
         text="Register",
         bg="#1C4975",
-        fg="#FFFFFF"
+        fg="#FFFFFF",
+        command=register
     )
 
     registerBtn.grid(row=0, column=1, sticky="e")

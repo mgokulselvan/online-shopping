@@ -9,6 +9,5 @@ root.geometry('550x550')
 root["bg"]="#E6E6E6"
 
 root.resizable(False, False)
-#registerScreen(root)
-adminDashboardScreen(root)
+registerScreen(root)
 root.mainloop()
