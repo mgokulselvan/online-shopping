@@ -7,7 +7,7 @@ def registerScreen(root):
     main_frame["bg"]="#E6E6E6"
 
     def openLogin():
-        from loginScreen import loginScreen
+        from .loginScreen import loginScreen
         main_frame.destroy()
         loginScreen(root)
 

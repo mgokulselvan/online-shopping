@@ -5,7 +5,7 @@ root = Tk()
 
 root.title('OnlySocks')
 
-root.geometry('550x500')
+root.geometry('550x550')
 root["bg"]="#E6E6E6"
 
 root.resizable(False, False)

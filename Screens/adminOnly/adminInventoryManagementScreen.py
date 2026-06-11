@@ -10,7 +10,7 @@ def adminInventoryManagementScreen(root):
 
     def addProduct():
         inventoryFrame.destroy()
-        from adminAddProductScreen import adminAddProductScreen
+        from .adminAddProductScreen import adminAddProductScreen
         adminAddProductScreen(root)
 
 
