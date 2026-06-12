@@ -81,3 +81,4 @@ def itemCard(parentFrame, itemName, itemDesc, unitPrice, quantityValue):
     )
 
     quantityBox.pack(pady=(5,0), ipady=4)
+    return quantity

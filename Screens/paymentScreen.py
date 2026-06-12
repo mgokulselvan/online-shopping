@@ -1,7 +1,48 @@
 from tkinter import *
+from tkinter import messagebox
 from Components import navbar
+from services.place_order import process_payment
+import sessionData
 
 def paymentScreen(root):
+
+    def pay():
+        result=process_payment(
+                sessionData.curr_user_id,
+                paymentType.get()
+                )
+        if result[0] == "success":
+
+            order_id = result[1]
+
+            messagebox.showinfo(
+                    "Payment Successful",
+                    f"Order #{order_id} placed successfully."
+                    )
+
+            paymentFrame.destroy()
+
+            from .homeScreen import homeScreen
+            homeScreen(root)
+
+        elif result[0] == "stock_error":
+
+            product = result[1]
+            stock = result[2]
+
+            messagebox.showerror(
+                    "Stock Error",
+                    f"{product} only has {stock} units available."
+                    )
+
+        elif result[0] == "empty_cart":
+
+            messagebox.showerror(
+                    "Empty Cart",
+                    "Your cart is empty."
+                    )
+
+
 
     paymentFrame = Frame(root, bg="#E6E6E6")
     paymentFrame.pack(fill="both", expand=True)
@@ -110,7 +151,8 @@ def paymentScreen(root):
         fg="white",
         font=("Arimo", 12, "bold"),
         padx=20,
-        pady=8
+        pady=8,
+        command=pay
     )
 
     confirmBtn.pack(anchor="e", padx=20, pady=(0,20))
