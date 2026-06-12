@@ -1,5 +1,6 @@
 from tkinter import *
 from Components import productCard,navbar
+from services.fetch_products import get_all_products
 
 def homeScreen(root):
 
@@ -57,8 +58,20 @@ def homeScreen(root):
     productsFrame.columnconfigure(0,weight=1)
     productsFrame.columnconfigure(1,weight=1)
 
-    for i in range(100):
-        productCard(productsFrame,i//2,i%2,f"product {i}",f"product {i} is a great product",(i*21)%2+1)
+#Fetching from DB
+    products = get_all_products()
+
+    for i, product in enumerate(products):
+
+        productCard(
+            productsFrame,
+            i // 2,
+            i % 2,
+            product[0],
+            product[1],           # product_name
+            product[2],           # category
+            product[3]            # price
+        )
 
 
 
