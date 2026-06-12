@@ -1,5 +1,10 @@
 from tkinter import *
 from Components import navbar,adminOrdersContainer
+from services.admin_orders import (
+    get_all_orders,
+    get_order_items
+)
+
 
 def adminOrdersScreen(root):
 
@@ -169,20 +174,34 @@ def adminOrdersScreen(root):
             )
     )
 
-    # SAMPLE ORDERS
+    orders = get_all_orders()
 
-    for i in range(10):
+    for order in orders:
+
+        order_id = order[0]
+        user_id = order[1]
+        user_name = order[2]
+        email = order[3]
+        phone = order[4]
+        address = order[5]
+        payment_id = order[6]
+        payment_type = order[7]
+        total_amount = order[8]
+        status = order[9]
+
+        items = get_order_items(order_id)
 
         adminOrdersContainer(
             ordersListFrame,
-            f"ORD-{1000+i}",
-            f"USR-{200+i}",
-            f"User {i}",
-            f"user{i}@mail.com",
-            "9876543210",
-            "New York, USA",
-            f"PAY-{500+i}",
-            "UPI",
-            (i * 50) + 20,
-            "PLACED"
+            order_id,
+            user_id,
+            user_name,
+            email,
+            phone,
+            address,
+            payment_id,
+            payment_type,
+            total_amount,
+            status,
+            items
         )

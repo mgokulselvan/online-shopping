@@ -1,5 +1,6 @@
 from tkinter import *
 from .adminItemOrderContainer import adminItemOrderContainer
+from services.update_order_status import update_order_status
 
 def adminOrdersContainer(
     parentFrame,
@@ -12,7 +13,8 @@ def adminOrdersContainer(
     paymentId,
     paymentType,
     totalAmount,
-    status
+    status,
+    items
 ):
 
     orderFrame = Frame(
@@ -30,6 +32,19 @@ def adminOrdersContainer(
         pady=10
     )
 
+
+    def changeStatus():
+
+        update_order_status(
+            orderId,
+            statusVar.get()
+        )
+
+        statusLabel.config(
+            text=f"Status: {statusVar.get()}"
+        )
+
+
     # =========================
     # ORDER INFO
     # =========================
@@ -44,6 +59,15 @@ def adminOrdersContainer(
 
     orderTitle.pack(anchor="w")
 
+    statusLabel = Label(
+        orderFrame,
+        text=f"Status: {status}",
+        font=("Arimo", 10, "bold"),
+        bg="#FFFFFF",
+        fg="#1C4975"
+    )
+
+    statusLabel.pack(anchor="w")
     userIdLabel = Label(
         orderFrame,
         text=f"User ID: {userId}",
@@ -162,20 +186,18 @@ def adminOrdersContainer(
 
     itemsFrame.pack(fill="x", pady=(5,10))
 
-    adminItemOrderContainer(
-        itemsFrame,
-        "Blue Socks",
-        2,
-        20
-    )
+    for item in items:
 
-    adminItemOrderContainer(
-        itemsFrame,
-        "Black Socks",
-        1,
-        10
-    )
+        product_name = item[0]
+        quantity = item[1]
+        price = item[2]
 
+        adminItemOrderContainer(
+            itemsFrame,
+            product_name,
+            quantity,
+            price
+        )
     # =========================
     # STATUS SECTION
     # =========================
@@ -187,14 +209,14 @@ def adminOrdersContainer(
 
     bottomFrame.pack(fill="x", pady=(10,0))
 
-    statusLabel = Label(
+    statusTitleLabel = Label(
         bottomFrame,
         text="Status",
         font=("Arimo", 11, "bold"),
         bg="#FFFFFF"
     )
 
-    statusLabel.pack(side="left")
+    statusTitleLabel.pack(side="left")
 
     statusVar = StringVar(value=status)
 
@@ -214,7 +236,8 @@ def adminOrdersContainer(
         text="Update Status",
         bg="#1C4975",
         fg="white",
-        padx=12
+        padx=12,
+        command=changeStatus
     )
 
     updateBtn.pack(side="right")
