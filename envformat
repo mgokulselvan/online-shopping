@@ -1,0 +1,8 @@
+ORACLE_HOST=localhost
+ORACLE_PORT=1521
+ORACLE_SERVICE=FREEPDB1
+ORACLE_USER=pythonapp
+ORACLE_PASSWORD=almighty_pull
+
+#if using docker
+#docker run -d --name oracle-db -p 1521:1521 -e ORACLE_PASSWORD=almighty_push -e APP_USER=pythonapp -e APP_USER_PASSWORD=almighty_pull gvenzl/oracle-free:latest
