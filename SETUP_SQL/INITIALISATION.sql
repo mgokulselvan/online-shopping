@@ -93,7 +93,8 @@ CREATE TABLE payments (
 
 
 CREATE TABLE admins (
-    admin_id NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    username VARCHAR2(50) UNIQUE,
-    password VARCHAR2(255)
+    admin_id NUMBER PRIMARY KEY,
+    CONSTRAINT fk_admin_user
+        FOREIGN KEY (admin_id)
+        REFERENCES users(user_id)
 );

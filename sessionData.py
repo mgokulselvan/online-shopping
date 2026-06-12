@@ -3,3 +3,4 @@ curr_user_name=None
 curr_user_email=None
 curr_user_addr=None
 curr_user_phNo=None
+isAdmin=False

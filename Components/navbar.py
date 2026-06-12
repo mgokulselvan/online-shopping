@@ -1,3 +1,4 @@
+import sessionData
 from tkinter import *
 
 def navbar(outerFrame,root):
@@ -85,24 +86,27 @@ def navbar(outerFrame,root):
         padx=5
     )
 
-	# ADMIN BUTTON
-    adminBtn = Button(
-        navButtonsFrame,
-        text="Admin",
-        font=("Arimo", 10, "bold"),
-        bg="#B22222",
-        fg="white",
-        bd=0,
-        padx=10,
-        pady=5,
-        cursor="hand2",
-        command=openAdmin
-    )
+    if sessionData.isAdmin:
 
-    adminBtn.pack(
-        side="left",
-        padx=5
-    )
+        # ADMIN BUTTON
+        adminBtn = Button(
+            navButtonsFrame,
+            text="Admin",
+            font=("Arimo", 10, "bold"),
+            bg="#B22222",
+            fg="white",
+            bd=0,
+            padx=10,
+            pady=5,
+            cursor="hand2",
+            command=openAdmin
+        )
+
+        adminBtn.pack(
+            side="left",
+            padx=5
+        )
+
 
 	# LOGOUT BUTTON
     logoutBtn = Button(

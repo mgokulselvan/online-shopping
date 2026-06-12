@@ -72,6 +72,3 @@ def homeScreen(root):
             product[2],           # category
             product[3]            # price
         )
-
-
-

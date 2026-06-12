@@ -13,6 +13,8 @@ def loginScreen(root):
 
     def login():
         from services.login_user import login_user
+        from services.is_admin import is_admin
+
         userData=login_user(
                 email.get(),
                 password.get()
@@ -23,12 +25,16 @@ def loginScreen(root):
                     fg="red"
                     )
             return
+        if is_admin(userData[0]):
+            sessionData.isAdmin=True;
+        else:
+            sessionData.isAdmin=False;
         sessionData.curr_user_id = userData[0]
         sessionData.curr_user_name = userData[1]
         sessionData.curr_user_email = userData[2]
         sessionData.curr_user_phNo = userData[4]
         sessionData.curr_user_addr = userData[5]
-        
+
         from .homeScreen import homeScreen
         main_frame.destroy()
         homeScreen(root)
@@ -186,3 +192,4 @@ def loginScreen(root):
     )
 
     loginBtn.grid(row=0, column=1, sticky="e")
+
