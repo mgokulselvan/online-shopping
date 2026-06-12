@@ -1,6 +1,5 @@
 from tkinter import *
 from .orderItemCard import orderItemCard
-from services.cancel_order import cancel_order
 
 def orderContainer(
     parentFrame,
@@ -10,11 +9,6 @@ def orderContainer(
     totalAmount,
     items
 ):
-
-    def cancelOrder():
-        cancel_order(orderId)
-        statusLabel.config(text="Status: CANCELLED")
-        cancelBtn.destroy()
 
     orderContainerFrame = Frame(
         parentFrame,
@@ -49,26 +43,22 @@ def orderContainer(
 
     statusLabel.pack(anchor="w", pady=(2,10))
 
+
     paymentLabel = Label(
         orderContainerFrame,
         text=f"Payment: {paymentMethod}",
-        font=("Arimo", 10),
-        bg="#EDEDED",
-        fg="#1B1C1C"
+        ...
     )
 
     paymentLabel.pack(anchor="w")
 
-
     totalLabel = Label(
         orderContainerFrame,
         text=f"Total: ${totalAmount}",
-        font=("Arimo", 10, "bold"),
-        bg="#EDEDED",
-        fg="#1C4975"
+        ...
     )
 
-    totalLabel.pack(anchor="w", pady=(0,10))
+totalLabel.pack(anchor="w", pady=(0,10))
 
     for item in items:
 
@@ -78,21 +68,22 @@ def orderContainer(
         orderItemCard(
             orderContainerFrame,
             product_name,
-            quantity
+            quantity,
+            paymentMethod,
+            totalAmount
         )
 
-    if status not in ("CANCELLED","DELIVERED"):
 # CANCEL BUTTON
-        cancelBtn = Button(
-            orderContainerFrame,
-            text="Cancel Order",
-            bg="#B22222",
-            fg="white",
-            padx=12,
-            command=cancelOrder
-        )
 
-        cancelBtn.pack(
-            side="right",
-            padx=(0,10)
-        )
+    cancelBtn = Button(
+        orderContainerFrame,
+        text="Cancel Order",
+        bg="#B22222",
+        fg="white",
+        padx=12
+    )
+
+    cancelBtn.pack(
+        side="right",
+        padx=(0,10)
+    )

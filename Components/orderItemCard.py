@@ -1,6 +1,10 @@
 from tkinter import *
 
-def orderItemCard(parentFrame, itemName, quantity, paymentType, totalAmount):
+def orderItemCard(
+    parentFrame,
+    itemName,
+    quantity
+):
 
     itemFrame = Frame(
         parentFrame,
@@ -33,23 +37,3 @@ def orderItemCard(parentFrame, itemName, quantity, paymentType, totalAmount):
     )
 
     quantityLabel.pack(anchor="w")
-
-    # PAYMENT TYPE
-    paymentLabel = Label(
-        itemFrame,
-        text=f"Payment: {paymentType}",
-        font=("Arimo", 10),
-        bg="#FFFFFF"
-    )
-
-    paymentLabel.pack(anchor="w")
-
-    # TOTAL
-    totalLabel = Label(
-        itemFrame,
-        text=f"Total: ${totalAmount}",
-        font=("Arimo", 10),
-        bg="#FFFFFF"
-    )
-
-    totalLabel.pack(anchor="w")
