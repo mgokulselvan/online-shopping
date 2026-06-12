@@ -1,5 +1,6 @@
 from tkinter import *
 from Components import navbar,inventoryItem
+from services.fetch_products import get_all_products
 
 def adminInventoryManagementScreen(root):
 
@@ -153,15 +154,20 @@ def adminInventoryManagementScreen(root):
             )
     )
 
-    # SAMPLE PRODUCTS
-    for i in range(20):
+    products = get_all_products()
+    for product in products:
+
+        product_id = product[0]
+        product_name = product[1]
+        category = product[2]
+        price = product[3]
+        stock_qty = product[4]
 
         inventoryItem(
             inventoryListFrame,
-            f"PRD-{1000+i}",
-            f"Product {i}",
-            f"Product {i} description",
-            "Socks",
-            (i * 10) + 5,
-            i * 3
+            product_id,
+            product_name,
+            category,
+            price,
+            stock_qty
         )

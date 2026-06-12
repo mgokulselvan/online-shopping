@@ -3,6 +3,22 @@ from Components import navbar
 
 def adminAddProductScreen(root):
 
+    def addProduct():
+        from services.add_product import add_product
+        add_product(
+                nameEntry.get(),
+                categoryEntry.get(),
+                priceEntry.get(),
+                stockEntry.get(),
+                )
+        addProductsFrame.destroy()
+
+        from .adminInventoryManagementScreen import (
+            adminInventoryManagementScreen
+        )
+
+        adminInventoryManagementScreen(root)
+
     addProductsFrame = Frame(
         root,
         bg="#E6E6E6"
@@ -126,36 +142,6 @@ def adminAddProductScreen(root):
         ipady=5
     )
 
-    # DESCRIPTION
-
-    descLabel = Label(
-        innerFrame,
-        text="Description",
-        font=("Arimo", 11, "bold"),
-        bg="#FFFFFF",
-        fg="#1B1C1C"
-    )
-
-    descLabel.grid(
-        row=1,
-        column=0,
-        sticky="nw",
-        pady=8
-    )
-
-    descBox = Text(
-        innerFrame,
-        height=3,
-        font=("Arimo", 11)
-    )
-
-    descBox.grid(
-        row=1,
-        column=1,
-        sticky="ew",
-        padx=(25,0)
-    )
-
     # CATEGORY
 
     categoryLabel = Label(
@@ -270,7 +256,8 @@ def adminAddProductScreen(root):
         padx=18,
         pady=7,
         bd=0,
-        cursor="hand2"
+        cursor="hand2",
+        command=addProduct
     )
 
     addBtn.pack(

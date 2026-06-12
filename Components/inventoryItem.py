@@ -1,15 +1,15 @@
 from tkinter import *
+from services.update_product import update_product
+from services.delete_product import delete_product
 
 def inventoryItem(
     parentFrame,
     productId,
     productName,
-    productDesc,
     category,
     price,
     stockValue
 ):
-
     itemFrame = Frame(
         parentFrame,
         bg="#FFFFFF",
@@ -20,6 +20,22 @@ def inventoryItem(
     )
 
     itemFrame.pack(fill="x", padx=20, pady=8)
+
+    def updateItem():
+
+        update_product(
+            productId,
+            priceVar.get(),
+            stock.get()
+        )
+    def deleteItem():
+
+        delete_product(productId)
+
+        itemFrame.destroy()
+
+
+
 
     # TOP SECTION
     topFrame = Frame(itemFrame, bg="#FFFFFF")
@@ -51,17 +67,6 @@ def inventoryItem(
 
     idLabel.pack(anchor="w")
 
-    # DESCRIPTION
-    descLabel = Label(
-        leftFrame,
-        text=productDesc,
-        font=("Arimo", 10),
-        bg="#FFFFFF",
-        fg="#1B1C1C"
-    )
-
-    descLabel.pack(anchor="w", pady=(5,0))
-
     # CATEGORY
     categoryLabel = Label(
         leftFrame,
@@ -73,16 +78,27 @@ def inventoryItem(
 
     categoryLabel.pack(anchor="w", pady=(5,0))
 
-    # PRICE
+# PRICE
     priceLabel = Label(
         leftFrame,
-        text=f"Price: ${price}",
-        font=("Arimo", 10),
+        text="Price",
+        font=("Arimo", 11, "bold"),
         bg="#FFFFFF",
         fg="#1B1C1C"
     )
 
     priceLabel.pack(anchor="w", pady=(5,0))
+
+    priceVar = StringVar(value=str(price))
+
+    priceBox = Entry(
+        leftFrame,
+        textvariable=priceVar,
+        width=10,
+        font=("Arimo", 11)
+    )
+
+    priceBox.pack(anchor="w", pady=(3,0))
 
     # RIGHT SECTION
     rightFrame = Frame(topFrame, bg="#FFFFFF")
@@ -125,7 +141,8 @@ def inventoryItem(
         text="Update",
         bg="#1C4975",
         fg="white",
-        padx=10
+        padx=10,
+        command=updateItem
     )
 
     updateBtn.pack(side="left", padx=3)
@@ -136,7 +153,8 @@ def inventoryItem(
         text="Delete",
         bg="#B22222",
         fg="white",
-        padx=10
+        padx=10,
+        command=deleteItem
     )
 
     deleteBtn.pack(side="left", padx=3)
