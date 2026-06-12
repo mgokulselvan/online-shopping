@@ -63,6 +63,7 @@ def adminInventoryManagementScreen(root):
 
     secTopBar.pack(side="left", padx=20,ipady=5,ipadx=5,fill="x",expand=True)
 
+    """
     searchBox = Entry(
         secTopBar,
         width=30,
@@ -79,7 +80,7 @@ def adminInventoryManagementScreen(root):
     )
 
     searchBtn.pack(side="left", padx=5, ipady=3,anchor="w")
-
+    """
     # ADD PRODUCT BUTTON
     addProductBtn = Button(
         secTopBar,

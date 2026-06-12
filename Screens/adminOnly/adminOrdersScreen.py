@@ -63,6 +63,7 @@ def adminOrdersScreen(root):
 
     divider.pack(fill="x", pady=(12,0))
 
+    """
     # SEARCH AREA
 
     searchFrame = Frame(
@@ -98,6 +99,7 @@ def adminOrdersScreen(root):
         side="left",
         padx=5
     )
+    """
     # =========================
     # CONTENT FRAME
     # =========================

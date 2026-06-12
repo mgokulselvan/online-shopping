@@ -9,6 +9,7 @@ def homeScreen(root):
 
     navbar(homeFrame,root)
 
+    """
     # SEARCH AREA
     searchFrame = Frame(homeFrame,bg="#D9D9D9")
     searchFrame.pack(side="top",padx=20)
@@ -18,7 +19,7 @@ def homeScreen(root):
 
     searchButton=Button(searchFrame,text="Search",bg="#1C4975",fg="white")
     searchButton.pack(side=LEFT,padx=5)
-
+    """
 
     # PRODUCTS SECTION
 

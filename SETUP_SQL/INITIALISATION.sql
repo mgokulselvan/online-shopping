@@ -98,3 +98,86 @@ CREATE TABLE admins (
         FOREIGN KEY (admin_id)
         REFERENCES users(user_id)
 );
+
+INSERT INTO products (product_name, category, price, stock_qty)
+VALUES ('Nike Crew Socks', 'Sports', 299, 50);
+
+INSERT INTO products (product_name, category, price, stock_qty)
+VALUES ('Adidas Ankle Socks', 'Sports', 249, 75);
+
+INSERT INTO products (product_name, category, price, stock_qty)
+VALUES ('Wool Winter Socks', 'Winter', 399, 30);
+
+INSERT INTO products (product_name, category, price, stock_qty)
+VALUES ('Cotton Everyday Socks', 'Casual', 199, 120);
+
+INSERT INTO products (product_name, category, price, stock_qty)
+VALUES ('Formal Black Socks', 'Formal', 179, 80);
+
+INSERT INTO products (product_name, category, price, stock_qty)
+VALUES ('Thermal Hiking Socks', 'Outdoor', 499, 25);
+
+INSERT INTO products (product_name, category, price, stock_qty)
+VALUES ('Striped Fashion Socks', 'Fashion', 229, 60);
+
+INSERT INTO products (product_name, category, price, stock_qty)
+VALUES ('Running Performance Socks', 'Sports', 349, 45);
+
+INSERT INTO products (product_name, category, price, stock_qty)
+VALUES ('Bamboo Comfort Socks', 'Eco', 279, 40);
+
+INSERT INTO products (product_name, category, price, stock_qty)
+VALUES ('Kids Cartoon Socks', 'Kids', 149, 100);
+
+COMMIT;
+
+
+INSERT INTO users(name,email,phone,password,address)
+VALUES(
+    'John Smith',
+    'john@example.com',
+    '1111111111',
+    'john123',
+    '123 Main Street'
+);
+
+INSERT INTO users(name,email,phone,password,address)
+VALUES(
+    'Sarah Johnson',
+    'sarah@example.com',
+    '2222222222',
+    'sarah123',
+    '456 Oak Avenue'
+);
+
+INSERT INTO users(name,email,phone,password,address)
+VALUES(
+    'Michael Brown',
+    'michael@example.com',
+    '3333333333',
+    'michael123',
+    '789 Pine Road'
+);
+
+INSERT INTO users(name,email,phone,password,address)
+VALUES(
+    'Emma Wilson',
+    'emma@example.com',
+    '4444444444',
+    'emma123',
+    '321 Cedar Lane'
+);
+
+COMMIT;
+
+INSERT INTO admins(admin_id)
+SELECT user_id
+FROM users
+WHERE email = 'john@example.com';
+
+INSERT INTO admins(admin_id)
+SELECT user_id
+FROM users
+WHERE email = 'sarah@example.com';
+
+COMMIT;
